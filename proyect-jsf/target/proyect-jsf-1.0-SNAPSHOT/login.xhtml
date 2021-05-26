@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://java.sun.com/jsf/html" 
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <f:facet name="first">
@@ -12,21 +13,29 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
         </f:facet>
-        <h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+        <!--<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>-->
         <title>PrimeFaces START PROYECT</title>
     </h:head>
     <h:body>
-        <h:form id="formLogin">
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Usuario: *" styleClass="colorText"></h:outputLabel>
-                <h:inputText id="txtUsuario" value="#{ctrlLogin.usuario}" required="true" requiredMessage="El usuario es obligatorio"></h:inputText>
-                
-                <h:outputLabel value="Contraseña: *" styleClass="colorText"></h:outputLabel>
-                <h:inputSecret id="txtPassword" value="#{ctrlLogin.password}" required="true" requiredMessage="La contraseña es obligatoria"></h:inputSecret>
-                
-                <h:commandButton value="Ingresar" action="#{ctrlLogin.ingresar}"></h:commandButton>
-            </h:panelGrid>
-        </h:form>
+        <div class="ui-fluid">
+            <h:form id="formLogin">
+                <p:growl id="growl" showDetail="true"/>
+                <p:panel id="pnlLogin" header="Inicio de sesión" style="text-align: center">
+                    <p:graphicImage name="images/start.png" width="50%"/>
+                    <p:panelGrid id="pnlGridLogin" columns="2" layout="grid" styleClass="showcase-text-align-center"
+                        columnClasses="ui-g-12 ui-md-12, ui-g-12 ui-md-12">
+                        <p:outputLabel value="Usuario: " styleClass="colorText" for="txtUsuario" style="float: left"></p:outputLabel>
+                       <p:inputText id="txtUsuario" value="#{ctrlLogin.usuario}" required="true" requiredMessage="El usuario es obligatorio"></p:inputText>
+
+                       <p:outputLabel value="Contraseña: " styleClass="colorText" for="txtPassword" style="float: left"></p:outputLabel>
+                       <p:password id="txtPassword" value="#{ctrlLogin.password}" required="true" requiredMessage="La contraseña es obligatoria"></p:password>
+
+                       <p:outputLabel></p:outputLabel>
+                       <p:commandButton value="Entrar" action="#{ctrlLogin.ingresar}" update="pnlGridLogin, growl"></p:commandButton>
+                   </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
     </h:body>
 </html>
 
