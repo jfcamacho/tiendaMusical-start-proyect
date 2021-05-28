@@ -1,6 +1,8 @@
 controllers/ctrlPrincipal.class
 com/softdesarrolladores/proyect/jsf/resources/JavaEE8Resource.class
 services/empleadoService.class
+controllers/ctrlSession.class
+dto/usuarioDTO.class
 controllers/ctrlLogin.class
 com/softdesarrolladores/proyect/jsf/JAXRSConfiguration.class
 entitys/empleado.class

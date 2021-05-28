@@ -7,6 +7,7 @@
     id="WebApp_ID" version="2.5">
 
     <display-name>Primer proyecto</display-name>
+    
 
     <!-- Change to "Production" when you are ready to deploy -->
     <context-param>
@@ -14,6 +15,11 @@
         <param-value>Development</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>nova-colored</param-value>
+    </context-param>
+    
     <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>login.xhtml</welcome-file>

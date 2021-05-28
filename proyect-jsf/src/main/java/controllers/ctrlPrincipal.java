@@ -21,6 +21,8 @@ import services.empleadoService;
 public class ctrlPrincipal {
     private List<empleado> empleados;
     
+    private List<empleado> empleadosFiltrados;
+    
     private empleadoService empleadoService = new empleadoService();
     
     @PostConstruct
@@ -39,4 +41,14 @@ public class ctrlPrincipal {
     public void setEmpleados(List<empleado> empleados) {
         this.empleados = empleados;
     }
+
+    public List<empleado> getEmpleadosFiltrados() {
+        return empleadosFiltrados;
+    }
+
+    public void setEmpleadosFiltrados(List<empleado> empleadosFiltrados) {
+        this.empleadosFiltrados = empleadosFiltrados;
+    }
+    
+    
 }

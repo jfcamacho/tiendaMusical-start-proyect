@@ -5,11 +5,13 @@
  */
 package controllers;
 
+import dto.usuarioDTO;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -22,11 +24,18 @@ public class ctrlLogin {
 
     private String usuario;
     private String password;
+    
+    @ManagedProperty("#{ctrlSession}")
+    private ctrlSession ctrlSession;
 
     public void ingresar() {
         System.out.println("Usuario.: " + usuario);
         if (usuario.equals("admin") && password.equals("admin")) {
             try {
+                usuarioDTO usuarioDto = new usuarioDTO();
+                usuarioDto.setUsuario(this.usuario);
+                usuarioDto.setPassword(this.password);
+                this.ctrlSession.setUsuarioDTO(usuarioDto);
                 this.redireccionar("principal.xhtml");
             } catch (IOException ex) {
                 FacesContext.getCurrentInstance().addMessage("formLogin:txtUsuario", 
@@ -59,5 +68,14 @@ public class ctrlLogin {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public ctrlSession getCtrlSession() {
+        return ctrlSession;
+    }
+
+    public void setCtrlSession(ctrlSession ctrlSession) {
+        this.ctrlSession = ctrlSession;
+    }
+    
 
 }
